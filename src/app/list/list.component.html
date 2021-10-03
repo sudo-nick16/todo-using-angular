@@ -1,0 +1,12 @@
+<div class="container" >
+    <div>
+        <input type="text"  (keydown.enter)="addTodo()" [(ngModel)]="inputValue">
+        <button (click)="addTodo()">Add</button>
+    </div>
+    <div class="list-wrapper" *ngIf="todoList.length; else empty">
+        <app-todo [save]="save" [delete]="delete" [todo]="todo" *ngFor="let todo of todoList"></app-todo>
+    </div>
+    <ng-template #empty>
+        <h2>Empty</h2>
+    </ng-template>
+</div>

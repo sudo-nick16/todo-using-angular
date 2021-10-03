@@ -1,0 +1,16 @@
+<div class="todo-item" [ngStyle]="{backgroundColor : todo.status? '#7eff7e' : 'rgb(255, 132, 132) ',
+                                    border: todo.status? '2px solid #339733' : '2px solid rgb(196, 52, 52)'}" >
+    <p *ngIf="!edit; else editBox">{{todo.name}}</p>
+    <ng-template #editBox>
+        <input class="edit-input" type="text" [(ngModel)]="todo.name">
+    </ng-template>
+    <div class="icons">
+        <input class="check" type="checkbox" [checked]="todo.status" (click)="toggleStatus()">
+        <i class="fas fa-edit" (click)="editToggle()" *ngIf="!edit; else doneIcon"></i>
+        <ng-template #doneIcon>
+            <i class="fas fa-check" (click)="editToggle()" ></i>
+        </ng-template>
+        <i class="fas fa-trash" (click)="delete(todo.name)"></i>
+    </div>
+</div>
+
